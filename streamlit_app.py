@@ -4,13 +4,13 @@ import pandas as pd
 import streamlit as st
 import datetime
 from datetime import datetime as dt
-import re
 import time
+import base64
 
 """
 # Welcome to your own UPI Transaction Fraud Detector!
 
-You have the option of inspecting a single transaction by adjusting the parameters below or you can even check 
+You have the option of inspecting a single transaction by adjusting the parameters below OR you can even check 
 multiple transactions at once by uploading a .csv file in the specified format
 """
 tran_date = st.date_input("Select the date of your transaction", datetime.date.today())
@@ -28,9 +28,34 @@ merch_cat = st.selectbox("Select merchant category", ['Brand Vouchers and OTT', 
 
 amt = st.text_input("Enter transaction amount")
 
-button_clicked = st.button("Check transaction")
+st.write("OR")
+
+df = pd.read_csv("sample.csv")
+st.write("CSV Format:", df)
+
+uploaded_file = st.file_uploader("Upload CSV", type=["csv"])
+if uploaded_file is not None:
+    df = pd.read_csv(uploaded_file)
+    st.write("Uploaded CSV:", df)
+
+button_clicked = st.button("Check transaction(s)")
 if button_clicked:
-    with st.spinner("Checking transaction..."):
-        time.sleep(5)
-        st.success("Checked transaction!")
-    st.write("Congratulations! Not a fraudulent transaction.")
+    if uploaded_file is not None:
+        with st.spinner("Checking transactions..."):
+            st.success("Checked transactions!")
+            #add fraud column to df, predict and store model outputs in it
+            def download_csv():
+                csv = df.to_csv(index=False,header=True)
+                b64 = base64.b64encode(csv.encode()).decode()
+                href = f'<a href="data:file/csv;base64,{b64}" download="output.csv">Download Output CSV</a>'
+                return href
+            st.markdown(download_csv(), unsafe_allow_html=True)
+    else:
+        with st.spinner("Checking transaction(s)..."):
+            st.success("Checked transaction!")
+            #predict and store model output in result, 0 for not fraud, 1 for fraud
+            result = 0
+            if(result==0):
+                st.write("Congratulations! Not a fraudulent transaction.")
+            else:
+                st.write("Oh no! This transaction is fraudulent.")
