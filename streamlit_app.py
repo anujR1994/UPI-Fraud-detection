@@ -39,6 +39,18 @@ if uploaded_file is not None:
     st.write("Uploaded CSV:", df)
 
 button_clicked = st.button("Check transaction(s)")
+st.markdown(
+    """
+    <style>
+    .stButton>button {
+        position: fixed;
+        bottom: 40px;
+        left: 413px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 if button_clicked:
     if uploaded_file is not None:
         with st.spinner("Checking transactions..."):
