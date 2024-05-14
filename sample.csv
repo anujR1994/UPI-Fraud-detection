@@ -1,6 +1,0 @@
-Date,Transaction_Type,Payment_Gateway,Transaction_State,Transaction_City,Merchant_Category,Amount
-31-05-2023,Bank Transfer,HDFC,Himachal Pradesh,Gorakhpur,Financial services and Taxes,39.68
-19-01-2024,Bill Payment,CRED,Andhra Pradesh,Khammam,Financial services and Taxes,26.89
-18-09-2023,Other,HDFC,Odisha,Nanded,Utilities,17.25
-18-08-2023,Other,HDFC,West Bengal,Machilipatnam,Other,35.72
-02-06-2023,Bank Transfer,IDFC UPI,Punjab,Panchkula,Utilities,25.81
