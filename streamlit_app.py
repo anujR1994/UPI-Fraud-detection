@@ -18,7 +18,7 @@ You have the option of inspecting a single transaction by adjusting the paramete
 multiple transactions at once by uploading a .csv file in the specified format
 """
 
-pickle_file_path = "UPI Fraud Detection updated.pkl"
+pickle_file_path = "UPI Fraud Detection Final.pkl"
 # Load the saved XGBoost model from the pickle file
 loaded_model = pickle.load(open(pickle_file_path, 'rb'))
 
