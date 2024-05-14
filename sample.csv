@@ -1,0 +1,6 @@
+Amount,Date,Transaction_Type,Payment_Gateway,Transaction_State,Merchant_Category
+39.68,31-05-2023,Other,HDFC,Himachal Pradesh,Financial services and Taxes
+26.89,19-01-2024,Bill Payment,HDFC,Arunachal Pradesh,Financial services and Taxes
+17.25,18-09-2023,Other,HDFC,Odisha,Utilities
+35.72,18-08-2023,Other,HDFC,West Bengal,Other
+25.81,02-06-2023,Payment,IDFC UPI,Punjab,Utilities
